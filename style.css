@@ -8,7 +8,7 @@
     --text-light: #495057; /* Teks isi yang sedikit lebih terang dari text-dark */
     --border-light: #e0e0e0; /* Garis pembatas lebih halus */
     --shadow-color: rgba(0, 0, 0, 0.07); /* Warna bayangan lebih lembut */
-    --highlight-attention: #dc3545; /* Merah untuk peringatan/penting */
+    --highlight-attention-text: #dc3545; /* Warna teks merah untuk peringatan/penting, jika BUKAN untuk .highlight */
     --success-color: #28a745; /* Hijau WhatsApp */
     --success-color-darker: #1e7e34; /* Hijau WhatsApp lebih gelap */
 }
@@ -158,15 +158,16 @@ li:hover::before {
     color: var(--primary-color-darker);
 }
 
-
+/* PERBAIKAN UNTUK HIGHLIGHT AGAR TIDAK BERANTAKAN SAAT PINDAH BARIS */
 .highlight {
     font-weight: 600;
-    color: var(--highlight-attention);
-    background-color: #fdf2f2; /* Latar belakang sangat lembut untuk highlight */
-    padding: 0.15em 0.4em; /* Padding untuk efek chip */
-    border-radius: 5px; /* Border radius untuk efek chip */
-    display: inline-block; /* Agar padding dan bg bekerja dengan baik */
-    margin: 0 1px; /* Sedikit margin agar tidak terlalu rapat */
+    color: var(--text-dark); /* Warna teks di dalam highlight. Jika ingin putih, pastikan background cukup gelap. */
+    background-color: #ffe0e0; /* Warna latar belakang highlight (merah muda lembut). Sesuaikan jika perlu. */
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    display: inline;           /* Membuat highlight mengalir dengan teks. */
+    -webkit-box-decoration-break: clone; /* Untuk browser Safari lama. */
+    box-decoration-break: clone;       /* Memastikan padding & background benar pada setiap baris. */
 }
 
 hr {
@@ -343,4 +344,3 @@ hr {
         font-size: 0.88em;
     }
 }
-
