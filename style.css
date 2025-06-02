@@ -1,0 +1,346 @@
+/* Variabel CSS untuk Warna */
+:root {
+    --primary-color: #007bff; /* Biru terang untuk highlight/utama */
+    --primary-color-darker: #0056b3; /* Biru lebih gelap untuk hover */
+    --secondary-color: #6c757d; /* Abu-abu untuk teks sekunder */
+    --background-light: #f8f9fa; /* Latar belakang terang */
+    --text-dark: #212529; /* Teks utama gelap (lebih gelap dari #343a40) */
+    --text-light: #495057; /* Teks isi yang sedikit lebih terang dari text-dark */
+    --border-light: #e0e0e0; /* Garis pembatas lebih halus */
+    --shadow-color: rgba(0, 0, 0, 0.07); /* Warna bayangan lebih lembut */
+    --highlight-attention: #dc3545; /* Merah untuk peringatan/penting */
+    --success-color: #28a745; /* Hijau WhatsApp */
+    --success-color-darker: #1e7e34; /* Hijau WhatsApp lebih gelap */
+}
+
+/* Gaya Dasar & Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Untuk scrolling halus jika ada internal link */
+}
+
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    font-weight: 400; /* Berat font default */
+    line-height: 1.75; /* Sedikit lebih lega untuk readability */
+    letter-spacing: 0.01em; /* Sedikit letter spacing untuk readability */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light);
+    color: var(--text-light); /* Default text color */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    opacity: 0;
+    animation: fadeInBody 0.8s 0.2s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* Animasi Fade-in untuk Body */
+@keyframes fadeInBody {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Focus visible global */
+*:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+}
+/* Khusus untuk button agar outline tidak tertutup elemen lain */
+.contact-button:focus-visible {
+    position: relative; /* Agar outline tidak terpotong */
+    z-index: 1;
+}
+
+
+.container {
+    max-width: 820px; /* Sedikit lebih ramping */
+    margin: 40px auto;
+    background-color: #ffffff;
+    padding: 35px 45px; /* Padding sedikit disesuaikan */
+    border-radius: 16px; /* Border radius lebih besar untuk kesan modern */
+    box-shadow: 0 12px 35px var(--shadow-color), 0 3px 8px rgba(0,0,0,0.04); /* Shadow lebih kompleks dan halus */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 45px var(--shadow-color), 0 5px 12px rgba(0,0,0,0.06);
+}
+
+h1 {
+    font-family: 'Merriweather', serif;
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 0; /* Hapus margin atas jika padding container sudah cukup */
+    margin-bottom: 30px;
+    font-size: 2.7em;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+}
+
+h2 {
+    font-family: 'Merriweather', serif;
+    color: var(--text-dark);
+    margin-top: 35px;
+    padding-bottom: 10px;
+    font-size: 1.75em;
+    font-weight: 700;
+    position: relative;
+    margin-bottom: 18px;
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0; /* Mulai dari 0 untuk animasi */
+    height: 3.5px; /* Sedikit lebih tebal */
+    background-color: var(--primary-color);
+    border-radius: 2px;
+    transition: width 0.45s cubic-bezier(0.23, 1, 0.32, 1.05); /* Easing lebih dinamis */
+}
+
+h2:hover::before {
+    width: 70px; /* Lebar saat hover */
+}
+
+p {
+    margin-bottom: 14px;
+    font-size: 1em;
+    color: var(--text-light); /* Warna teks isi */
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+    margin-bottom: 18px;
+}
+
+li {
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 0.98em;
+    color: var(--text-dark);
+    padding-left: 28px; /* Lebih banyak ruang untuk ikon */
+    line-height: 1.7;
+    transition: transform 0.2s ease-out, color 0.2s ease-out; /* Animasi hover list */
+}
+
+li:hover {
+    transform: translateX(3px); /* Sedikit geser saat hover */
+    color: var(--primary-color);
+}
+
+li::before {
+    content: '✓'; /* Ikon centang default */
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 1px; /* Sesuaikan posisi vertikal */
+    font-weight: 700; /* Lebih tebal */
+    font-size: 1.15em;
+    transition: color 0.2s ease-out;
+}
+li:hover::before {
+    color: var(--primary-color-darker);
+}
+
+
+.highlight {
+    font-weight: 600;
+    color: var(--highlight-attention);
+    background-color: #fdf2f2; /* Latar belakang sangat lembut untuk highlight */
+    padding: 0.15em 0.4em; /* Padding untuk efek chip */
+    border-radius: 5px; /* Border radius untuk efek chip */
+    display: inline-block; /* Agar padding dan bg bekerja dengan baik */
+    margin: 0 1px; /* Sedikit margin agar tidak terlalu rapat */
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: var(--border-light);
+    margin: 40px 0; /* Jarak lebih besar */
+}
+
+.footer-note {
+    text-align: center;
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 1px solid var(--border-light);
+    color: var(--secondary-color);
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* Bagian Kontak */
+.contact-section {
+    text-align: center;
+    margin-top: 30px;
+    padding: 25px 20px; /* Padding disesuaikan */
+    background-color: #ffffff; /* Warna bisa disamakan dengan container atau sedikit beda */
+    border: 1px solid var(--border-light); /* Tambahkan border halus */
+    border-radius: 12px; /* Radius disamakan dengan container */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); /* Shadow halus untuk bagian kontak */
+}
+
+.contact-section p {
+    font-size: 1.05em;
+    margin-bottom: 20px;
+    color: var(--text-dark);
+    font-weight: 600; /* Teks pembuka lebih tegas */
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Agar tombol sama tinggi jika teksnya beda panjang */
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Pusatkan konten tombol */
+    padding: 12px 24px; /* Padding tombol lebih nyaman */
+    border: 2px solid transparent; /* Border awal transparan untuk outline button */
+    border-radius: 8px;
+    font-size: 0.95em;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.25s ease-out; /* Transisi lebih cepat dan halus */
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    min-height: 48px; /* Tinggi minimum tombol */
+    line-height: 1.5; /* Jaga line height */
+}
+
+.contact-button svg { /* Styling untuk ikon SVG di tombol */
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    vertical-align: middle; /* Jaga ikon tetap di tengah */
+}
+
+.contact-button:hover {
+    transform: translateY(-2px) scale(1.02); /* Efek hover lebih interaktif */
+    box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+}
+.contact-button:active {
+    transform: translateY(0) scale(0.98); /* Efek saat tombol ditekan */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.whatsapp-button {
+    background-color: var(--success-color);
+}
+.whatsapp-button:hover {
+    background-color: var(--success-color-darker);
+}
+
+.email-button {
+    background-color: var(--primary-color);
+}
+.email-button:hover {
+    background-color: var(--primary-color-darker);
+}
+
+.outline-button {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+.outline-button:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+}
+.outline-button svg path { /* Mengubah warna ikon SVG pada outline button */
+    fill: var(--primary-color);
+    transition: fill 0.25s ease-out;
+}
+.outline-button:hover svg path {
+    fill: #ffffff;
+}
+
+
+/* --- Media Queries untuk Responsivitas --- */
+@media (max-width: 992px) {
+   .container {
+        margin: 30px auto;
+        padding: 30px 35px;
+    }
+    h1 { font-size: 2.4em; }
+    h2 { font-size: 1.6em; }
+}
+
+@media (max-width: 768px) {
+    body { line-height: 1.7; }
+   .container {
+        margin: 20px auto;
+        padding: 25px 20px;
+        border-radius: 12px; /* Tetap ada radius di tablet */
+    }
+    h1 {
+        font-size: 2.1em;
+        margin-bottom: 25px;
+    }
+    h2 {
+        font-size: 1.5em;
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+    p { font-size: 0.95em; }
+    li { font-size: 0.92em; padding-left: 25px; }
+
+   .contact-section {
+        padding: 20px 15px;
+        margin-top: 25px;
+    }
+   .contact-buttons {
+        flex-direction: column; /* Tombol stack vertikal */
+        gap: 10px;
+        align-items: stretch; /* Tombol jadi full-width relatif terhadap parent */
+    }
+   .contact-button {
+        width: 100%; /* Tombol full width dalam flex column */
+        max-width: 320px; /* Batasi lebar agar tidak terlalu besar, jika parentnya lebar */
+        margin-left: auto; /* Pusatkan jika max-width tercapai */
+        margin-right: auto; /* Pusatkan jika max-width tercapai */
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+        margin: 15px auto;
+        border-radius: 8px; /* Radius lebih kecil untuk mobile */
+    }
+    h1 { font-size: 1.8em; line-height: 1.25; }
+    h2 { font-size: 1.35em; }
+    p, li { font-size: 0.9em; }
+    li { padding-left: 22px; }
+    li::before { font-size: 1.1em; }
+
+   .contact-button {
+        padding: 10px 18px;
+        font-size: 0.88em;
+    }
+}
+
