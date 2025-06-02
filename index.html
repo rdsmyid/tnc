@@ -4,29 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syarat dan Ketentuan – RDS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Font Import dari Google Fonts (Opsional, tapi direkomendasikan untuk estetika) */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        /* Variabel CSS untuk Warna */
+        :root {
+            --primary-color: #007bff; /* Biru terang untuk highlight/utama */
+            --secondary-color: #6c757d; /* Abu-abu untuk teks sekunder */
+            --background-light: #f8f9fa; /* Latar belakang terang */
+            --text-dark: #343a40; /* Teks utama gelap */
+            --border-light: #e9ecef; /* Garis pembatas */
+            --shadow-light: rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+            --highlight-attention: #dc3545; /* Merah untuk peringatan/penting */
+        }
 
         /* Gaya Dasar & Reset */
         body {
-            font-family: 'Poppins', Arial, sans-serif; /* Menggunakan Poppins sebagai font utama */
-            line-height: 1.7; /* Menambah tinggi baris agar lebih nyaman dibaca */
-            margin: 20px; /* Margin default untuk desktop */
+            font-family: 'Open Sans', Arial, sans-serif; /* Font utama untuk isi */
+            line-height: 1.8; /* Lebih lega untuk readability */
+            margin: 0;
             padding: 0;
-            background-color: #f0f2f5; /* Warna latar belakang lebih lembut */
-            color: #333;
-            -webkit-font-smoothing: antialiased; /* Memperhalus teks di WebKit browsers */
-            -moz-osx-font-smoothing: grayscale; /* Memperhalus teks di Firefox macOS */
-            opacity: 0; /* Awalnya tidak terlihat untuk animasi fade-in */
-            animation: fadeIn 0.8s forwards; /* Animasi fade-in saat load */
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            opacity: 0;
+            animation: fadeIn 1s forwards cubic-bezier(0.2, 0.8, 0.2, 1); /* Animasi lebih halus */
         }
 
         /* Animasi Fade-in */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px); /* Mulai sedikit di bawah */
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -35,153 +46,253 @@
         }
 
         .container {
-            max-width: 850px; /* Sedikit lebih lebar untuk konten */
-            margin: 30px auto; /* Centering container di desktop, margin lebih besar */
+            max-width: 900px; /* Lebih lebar untuk kesan lapang */
+            margin: 40px auto; /* Margin lebih besar */
             background-color: #ffffff;
-            padding: 40px;
-            border-radius: 12px; /* Sudut lebih membulat */
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Shadow yang lebih lembut dan modern */
-            transition: all 0.3s ease-in-out; /* Transisi untuk perubahan properti */
+            padding: 50px;
+            border-radius: 15px; /* Lebih membulat */
+            box-shadow: 0 10px 30px var(--shadow-light); /* Bayangan lebih dalam tapi lembut */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .container:hover {
+            transform: translateY(-5px); /* Efek mengangkat saat hover */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: #2c3e50;
+            font-family: 'Merriweather', serif; /* Font serif untuk judul utama */
+            color: var(--primary-color);
             text-align: center;
-            margin-bottom: 25px;
-            font-size: 32px; /* Ukuran font default untuk desktop */
-            font-weight: 600; /* Lebih tebal */
+            margin-bottom: 30px;
+            font-size: 3.2em; /* Ukuran relatif untuk skalabilitas */
+            font-weight: 700;
+            letter-spacing: -0.03em; /* Sedikit rapat untuk kesan modern */
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
         }
 
         h2 {
-            color: #34495e;
-            margin-top: 35px; /* Margin atas lebih besar */
-            border-bottom: 2px solid #e0e0e0; /* Garis bawah lebih jelas */
-            padding-bottom: 8px;
-            font-size: 24px; /* Ukuran font default untuk desktop */
-            font-weight: 600;
-            position: relative; /* Untuk menambahkan efek garis bawah */
+            font-family: 'Merriweather', serif;
+            color: var(--text-dark);
+            margin-top: 45px;
+            padding-bottom: 12px;
+            font-size: 2em;
+            font-weight: 700;
+            position: relative;
+            margin-bottom: 20px;
         }
 
-        /* Efek garis bawah h2 saat hover (Opsional) */
-        h2::after {
+        h2::before { /* Garis dekoratif di bawah h2 */
             content: '';
             position: absolute;
             left: 0;
-            bottom: -2px;
-            width: 0;
-            height: 2px;
-            background-color: #4CAF50; /* Warna hijau cerah */
+            bottom: 0;
+            width: 60px; /* Lebar garis */
+            height: 3px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
             transition: width 0.3s ease-out;
         }
 
-        h2:hover::after {
-            width: 100%;
+        h2:hover::before {
+            width: 120px; /* Lebar garis saat hover */
         }
 
         p {
-            margin-bottom: 12px;
-            line-height: 1.8;
-            font-size: 16px;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: var(--secondary-color);
         }
 
         ul {
-            list-style-type: disc;
-            margin-left: 25px; /* Indentasi lebih dalam */
-            margin-bottom: 15px;
-            padding-left: 0; /* Pastikan tidak ada padding tambahan */
+            list-style-type: none; /* Hilangkan bullet default */
+            margin-left: 0;
+            padding-left: 25px; /* Padding untuk ikon kustom */
+            margin-bottom: 20px;
         }
 
         li {
-            margin-bottom: 8px;
-            font-size: 15px;
+            position: relative;
+            margin-bottom: 10px;
+            font-size: 1em;
+            color: var(--text-dark);
+        }
+
+        li::before { /* Ikon bullet kustom */
+            content: '✓'; /* Atau '•', '→', dll. */
+            color: var(--primary-color);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
         }
 
         .highlight {
-            font-weight: 600; /* Bold lebih modern */
-            color: #e74c3c; /* Warna untuk penekanan */
+            font-weight: 600;
+            color: var(--highlight-attention); /* Merah untuk penekanan kuat */
         }
 
-        /* Styling untuk garis pembatas */
         hr {
             border: none;
-            border-top: 1px solid #e0e0e0;
-            margin: 30px 0;
+            border-top: 1px dashed var(--border-light); /* Garis putus-putus elegan */
+            margin: 40px 0;
         }
 
         .footer-note {
             text-align: center;
-            margin-top: 50px; /* Margin atas lebih besar */
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
-            color: #777;
-            font-size: 15px;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-light);
+            color: var(--secondary-color);
+            font-size: 0.95em;
+            font-style: italic;
         }
 
-        .contact-info {
-            margin-top: 25px;
-            text-align: left;
-        }
-        .contact-info p {
-            margin: 8px 0;
-            font-size: 16px;
+        /* Bagian Kontak */
+        .contact-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: var(--background-light);
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
         }
 
-        .contact-info a {
-            color: #3498db; /* Warna biru untuk tautan */
+        .contact-section p {
+            font-size: 1.1em;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Jarak antar tombol */
+            flex-wrap: wrap; /* Agar responsif pada layar kecil */
+        }
+
+        .contact-button {
+            display: inline-flex; /* Agar ikon dan teks sejajar */
+            align-items: center;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05em;
+            font-weight: 600;
             text-decoration: none;
-            transition: color 0.3s ease-in-out; /* Transisi untuk warna tautan */
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .contact-info a:hover {
-            color: #2980b9; /* Warna biru lebih gelap saat hover */
-            text-decoration: underline; /* Garis bawah saat hover */
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
+
+        .contact-button i { /* Untuk ikon jika Anda menggunakannya (misal Font Awesome) */
+            margin-right: 8px;
+            font-size: 1.2em;
+        }
+
+        .whatsapp-button {
+            background-color: #28a745; /* Hijau WhatsApp */
+        }
+
+        .whatsapp-button:hover {
+            background-color: #218838;
+        }
+
+        .email-button {
+            background-color: #007bff; /* Biru Email */
+        }
+
+        .email-button:hover {
+            background-color: #0056b3;
+        }
+
+        .web-link {
+            display: block;
+            margin-top: 25px;
+            font-size: 1em;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .web-link:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
 
         /* --- Media Queries untuk Responsivitas --- */
 
-        /* Untuk layar dengan lebar maksimum 768px (umumnya tablet dan ponsel) */
-        @media (max-width: 768px) {
-            body {
-                margin: 0; /* Hapus margin body di perangkat kecil agar konten penuh */
-            }
-
+        @media (max-width: 992px) { /* Untuk tablet landscape dan ke bawah */
             .container {
-                margin: 0 auto; /* Hilangkan margin atas/bawah, tetap auto untuk sisi */
-                padding: 20px; /* Kurangi padding */
-                border-radius: 0; /* Hilangkan border-radius agar mulus di tepi layar */
-                box-shadow: none; /* Hilangkan shadow untuk tampilan lebih simpel */
+                margin: 20px auto;
+                padding: 40px;
             }
-
             h1 {
-                font-size: 28px; /* Sesuaikan ukuran font h1 */
+                font-size: 2.8em;
             }
-
             h2 {
-                font-size: 22px; /* Sesuaikan ukuran font h2 */
-            }
-
-            p {
-                font-size: 15px;
-            }
-
-            ul {
-                margin-left: 20px; /* Sedikit kurangi indentasi list */
+                font-size: 1.8em;
             }
         }
 
-        /* Untuk layar dengan lebar maksimum 480px (umumnya ponsel kecil) */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 24px; /* Lebih kecil lagi untuk h1 */
-            }
-            h2 {
-                font-size: 20px; /* Lebih kecil lagi untuk h2 */
+        @media (max-width: 768px) { /* Untuk tablet portrait dan ke bawah */
+            body {
+                margin: 0;
             }
             .container {
-                padding: 15px; /* Padding lebih kecil lagi */
+                margin: 0 auto;
+                padding: 25px;
+                border-radius: 0;
+                box-shadow: none;
             }
-            p, li, .contact-info p {
-                font-size: 14px; /* Ukuran font lebih kecil untuk teks */
+            h1 {
+                font-size: 2.4em;
+            }
+            h2 {
+                font-size: 1.6em;
+                margin-top: 35px;
+                padding-bottom: 8px;
+            }
+            p {
+                font-size: 0.95em;
+            }
+            ul {
+                padding-left: 20px;
+            }
+            li {
+                font-size: 0.9em;
+            }
+            .contact-buttons {
+                flex-direction: column; /* Tombol stack vertikal */
+                gap: 15px;
+            }
+            .contact-button {
+                width: 100%; /* Lebar penuh */
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) { /* Untuk ponsel kecil */
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.4em;
+            }
+            .container {
+                padding: 15px;
+            }
+            p, li, .contact-info p, .contact-button, .web-link {
+                font-size: 0.9em;
             }
         }
     </style>
@@ -243,10 +354,17 @@
         <hr>
 
         <h2>8. Kontak Kami</h2>
-        <p>Jika Anda memiliki pertanyaan atau mengalami kendala, jangan ragu untuk menghubungi kami:</p>
-        <div class="contact-info">
-            <p><strong>Email:</strong> <a href="mailto:rds.my.id@gmail.com">rds.my.id@gmail.com</a></p>
-            <p><strong>WhatsApp:</strong> <a href="https://wa.me/[Isi_Nomor_Kontak_Anda_di_sini]" target="_blank"><span class="highlight">[Isi Nomor Kontak Anda di sini]</span></a></p>
+        <div class="contact-section">
+            <p>Jika Anda memiliki pertanyaan atau mengalami kendala, jangan ragu untuk menghubungi kami melalui:</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/6285117219192" target="_blank" class="contact-button whatsapp-button">
+                    WhatsApp
+                </a>
+                <a href="mailto:rds.my.id@gmail.com" class="contact-button email-button">
+                    Email
+                </a>
+            </div>
+            <a href="https://rds.my.id" target="_blank" class="web-link">Kunjungi Website Utama Kami: rds.my.id</a>
         </div>
 
         <div class="footer-note">
